@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Default Page</title>
+    </head>
+<body>
+    <h1>
+      <a href="http://${NGINX_SYMFONY_SERVER_NAME}" target="_blank">${NGINX_SYMFONY_SERVER_NAME}</a>
+    </h1>
+</body>
+</html>
