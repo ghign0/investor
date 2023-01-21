@@ -4,9 +4,9 @@ namespace App\Model;
 
 use App\Repository\TypeRepository;
 use Doctrine\DBAL\Types\Types;
-use Ramsey\Uuid\Doctrine\UuidGenerator;
-use Ramsey\Uuid\UuidInterface;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Types\UuidType;
+use Symfony\Component\Uid\Uuid;
 
 #[ORM\Entity(repositoryClass: TypeRepository::class)]
 class Type
@@ -14,9 +14,9 @@ class Type
 
     #[ORM\Id]
     #[ORM\GeneratedValue(strategy: 'CUSTOM')]
-    #[ORM\CustomIdGenerator(class: UuidGenerator::class )]
-    #[ORM\Column(length: 255)]
-    private UuidInterface $id;
+    #[ORM\CustomIdGenerator(class: 'doctrine.uuid_generator' )]
+    #[ORM\Column( type: UuidType::NAME, length: 255)]
+    private Uuid $id;
 
     #[ORM\Column(type: Types::STRING ,  length: 255)]
     private string $name;
@@ -24,11 +24,11 @@ class Type
     #[ORM\Column(type: Types::STRING ,  length: 255)]
     private string $code;
 
-    #[ORM\Column(type: Types::TEXT ,  length: 255)]
+    #[ORM\Column(type: Types::TEXT ,  length: 255, nullable: true)]
     private string $note;
 
     public function __construct(
-        UuidInterface $id,
+        Uuid $id,
         string $name,
         string $code,
         string $note
@@ -36,5 +36,15 @@ class Type
     )
     {
     }
+
+    /**
+     * @return Uuid
+     */
+    public function getId(): Uuid
+    {
+        return $this->id;
+    }
+
+
 
 }
