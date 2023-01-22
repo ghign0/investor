@@ -42,6 +42,10 @@ class Asset
     #[ORM\Column(type: Types::JSON, nullable: true )]
     private ?string $extraData;
 
+    #[ORM\OneToOne(mappedBy: 'asset', targetEntity: Wallet::class)]
+    #[ORM\JoinColumn(name: 'wallet_id', referencedColumnName: 'id')]
+    private Wallet $wallet;
+
 
     public function createNewAsset(string $name, string $parent, Category $category, Type $type, Risk $risk)
     {
@@ -107,6 +111,15 @@ class Asset
     public function getType(): Type
     {
         return $this->type;
+    }
+
+
+    /**
+     * @param Wallet $wallet
+     */
+    public function setWallet(Wallet $wallet): void
+    {
+        $this->wallet = $wallet;
     }
 
 }
