@@ -54,6 +54,22 @@ class Asset
     }
 
     /**
+     * @return Uuid|null
+     */
+    public function getId(): ?Uuid
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCode(): string
+    {
+        return $this->code;
+    }
+
+    /**
      * @return string
      */
     public function getName(): string
