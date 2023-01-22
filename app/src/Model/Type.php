@@ -45,6 +45,30 @@ class Type
         return $this->id;
     }
 
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCode(): string
+    {
+        return $this->code;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNote(): string
+    {
+        return $this->note;
+    }
+
 
 
 }

@@ -13,7 +13,7 @@ class CategoryListHandler
     {
     }
 
-    public function handle(CategoryListCommand $command): mixed
+    public function handle(): mixed
     {
         $categories = $this->categoryRepository->findAll();
 

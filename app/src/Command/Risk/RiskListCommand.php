@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Command;
+namespace App\Command\Risk;
 
 use App\Handler\Risk\RiskListHandler;
 use App\Model\Risk;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -30,14 +31,16 @@ class RiskListCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $output->writeln("CATEGORIA - vedi lista");
-        $output->writeln("------------------");
-
         $risks = $this->handler->handle();
+
+        $table = new Table($output);
+        $table->setHeaderTitle("Lista dei livelli di rischio");
+        $table->setHeaders(['id', 'Name', 'code']);
 
         /** @var Risk $risk */
         foreach ($risks as $risk) {
-            $output->writeln(sprintf("> %s -  %s [%s]", $risk->getId()->toRfc4122(), $risk->getName(), $risk->getCode()));
+            $table->addRow([$risk->getId()->toRfc4122(), $risk->getName(), $risk->getCode()]);
+
         }
 
         return Command::SUCCESS;

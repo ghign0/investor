@@ -5,6 +5,7 @@ namespace App\Model;
 use App\Repository\CategoryRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Jawira\CaseConverter\Convert;
 use Symfony\Bridge\Doctrine\Types\UuidType;
 use Symfony\Component\Uid\Uuid;
 
@@ -26,14 +27,12 @@ class Category
     #[ORM\Column(type: Types::TEXT ,  length: 255, nullable: true)]
     private string $note;
 
-    public function __construct(
-        ?Uuid $id,
-        string $name,
-        string $code,
-        string $note
 
-    )
+    public function createNewCategory(string $nome)
     {
+        $this->nome = $nome;
+        $this->code = (new Convert($nome))->toKebab();
+
     }
 
     /**

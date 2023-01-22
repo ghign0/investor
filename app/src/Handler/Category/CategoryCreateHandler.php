@@ -2,6 +2,7 @@
 
 namespace App\Handler\Category;
 
+use App\Model\Category;
 use Doctrine\ORM\EntityManagerInterface;
 
 class CategoryCreateHandler
@@ -12,13 +13,14 @@ class CategoryCreateHandler
     {
     }
 
-    public function handle(CateogryCreateCommand $command): mixed
+    public function handle(string $nome): Category
     {
-        $category = $command->getCategory();
+        $category = new Category();
+        $category->createNewCategory($nome);
         $this->entityManager->persist($category);
         $this->entityManager->flush();
 
-
+        return $category;
     }
 
 }
