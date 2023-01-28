@@ -4,11 +4,16 @@ namespace App\Command\Risk;
 
 use App\Handler\Risk\RiskListHandler;
 use App\Model\Risk;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+#[AsCommand(
+    name: 'app:risk:list',
+    description: 'visluazza tutte le tipologie di rischio'
+)]
 class RiskListCommand extends Command
 {
     public function __construct(
@@ -16,12 +21,6 @@ class RiskListCommand extends Command
     )
     {
         parent::__construct();
-    }
-
-    protected function configure()
-    {
-        $this->setName('app:risk:list')
-            ->setDescription('visluazza tutte le tipologie di rischio');
     }
 
     /**

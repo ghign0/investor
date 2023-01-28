@@ -23,12 +23,6 @@ class RiskCreateCommand extends Command
         parent::__construct();
     }
 
-    protected function configure()
-    {
-
-    }
-
-
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $output->writeln("RISCHIO - crea");

@@ -4,11 +4,15 @@ namespace App\Command\Category;
 
 use App\Handler\Category\CategoryListHandler;
 use App\Model\Category;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
+#[AsCommand(
+    name:'app:category:list' ,
+    description: 'visluazza tutte le categorie')]
 class CategoryListCommand extends Command
 {
     public function __construct(
@@ -16,12 +20,6 @@ class CategoryListCommand extends Command
     )
     {
         parent::__construct();
-    }
-
-    protected function configure()
-    {
-        $this->setName('app:category:list')
-            ->setDescription('visluazza tutte le categorie');
     }
 
     /**

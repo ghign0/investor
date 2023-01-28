@@ -3,11 +3,16 @@
 namespace App\Command\Type;
 
 use App\Handler\Type\TypeCreateHandler;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\Question;
 
+#[AsCommand(
+    name: 'app:type:create',
+    description: 'crea una nuova tipologia di asset'
+)]
 class TypeCreateCommand extends Command
 {
     public function __construct(
