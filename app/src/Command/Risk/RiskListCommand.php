@@ -43,6 +43,8 @@ class RiskListCommand extends Command
 
         }
 
+        $table->render();
+
         return Command::SUCCESS;
     }
 }

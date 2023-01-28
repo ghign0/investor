@@ -9,7 +9,7 @@ use Symfony\Bridge\Doctrine\Types\UuidType;
 use Symfony\Component\Uid\Uuid;
 
 #[ORM\Entity(repositoryClass: TypeRepository::class)]
-class Type
+class Type extends AttributeAbstract
 {
 
     #[ORM\Id]
@@ -26,49 +26,6 @@ class Type
 
     #[ORM\Column(type: Types::TEXT ,  length: 255, nullable: true)]
     private string $note;
-
-    public function __construct(
-        Uuid $id,
-        string $name,
-        string $code,
-        string $note
-
-    )
-    {
-    }
-
-    /**
-     * @return Uuid
-     */
-    public function getId(): Uuid
-    {
-        return $this->id;
-    }
-
-    /**
-     * @return string
-     */
-    public function getName(): string
-    {
-        return $this->name;
-    }
-
-    /**
-     * @return string
-     */
-    public function getCode(): string
-    {
-        return $this->code;
-    }
-
-    /**
-     * @return string
-     */
-    public function getNote(): string
-    {
-        return $this->note;
-    }
-
 
 
 }

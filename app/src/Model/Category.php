@@ -10,7 +10,7 @@ use Symfony\Bridge\Doctrine\Types\UuidType;
 use Symfony\Component\Uid\Uuid;
 
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
-class Category
+class Category extends AttributeAbstract
 {
     #[ORM\Id]
     #[ORM\GeneratedValue(strategy: 'CUSTOM')]
@@ -26,45 +26,5 @@ class Category
 
     #[ORM\Column(type: Types::TEXT ,  length: 255, nullable: true)]
     private string $note;
-
-
-    public function createNewCategory(string $nome)
-    {
-        $this->nome = $nome;
-        $this->code = (new Convert($nome))->toKebab();
-
-    }
-
-    /**
-     * @return Uuid|null
-     */
-    public function getId(): ?Uuid
-    {
-        return $this->id;
-    }
-
-    /**
-     * @return string
-     */
-    public function getName(): string
-    {
-        return $this->name;
-    }
-
-    /**
-     * @return string
-     */
-    public function getCode(): string
-    {
-        return $this->code;
-    }
-
-    /**
-     * @return string
-     */
-    public function getNote(): string
-    {
-        return $this->note;
-    }
 
 }

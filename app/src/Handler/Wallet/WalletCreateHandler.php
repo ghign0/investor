@@ -25,6 +25,8 @@ class WalletCreateHandler
         $this->entityManager->persist($wallet);
         $this->entityManager->flush();
 
+        return $wallet;
+
     }
 
 }

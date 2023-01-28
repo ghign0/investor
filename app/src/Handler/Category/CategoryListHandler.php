@@ -2,21 +2,9 @@
 
 namespace App\Handler\Category;
 
-use App\Repository\CategoryRepository;
+use App\Handler\AttributeListHandlerAbstract;
 
-class CategoryListHandler
+class CategoryListHandler extends AttributeListHandlerAbstract
 {
-
-    public function __construct(
-        private CategoryRepository $categoryRepository
-    )
-    {
-    }
-
-    public function handle(): mixed
-    {
-        $categories = $this->categoryRepository->findAll();
-
-        return $categories;
-    }
+    protected const ATTRIBUTE_TYPE = 'category';
 }

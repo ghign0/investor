@@ -2,19 +2,10 @@
 
 namespace App\Handler\Risk;
 
-use App\Repository\RiskRepository;
+use App\Handler\AttributeListHandlerAbstract;
 
-class RiskListHandler
+class RiskListHandler extends AttributeListHandlerAbstract
 {
-    public function __construct(
-        private RiskRepository $repository,
-    )
-    {
-    }
-
-    public function handle()
-    {
-        return $this->repository->findAll();
-    }
+    protected const ATTRIBUTE_TYPE = 'risk';
 
 }
