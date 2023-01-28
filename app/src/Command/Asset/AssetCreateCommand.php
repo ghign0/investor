@@ -3,7 +3,7 @@
 namespace App\Command\Asset;
 
 use App\Handler\Asset\AssetCreateHandler;
-use App\Model\Asset;
+use App\Model\ValueObject\Asset;
 use App\Model\Category;
 use App\Model\Risk;
 use App\Model\Type;

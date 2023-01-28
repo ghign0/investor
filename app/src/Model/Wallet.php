@@ -3,9 +3,9 @@
 namespace App\Model;
 
 
+use App\Model\ValueObject\Asset;
 use App\Repository\WalletRepository;
 use Doctrine\DBAL\Types\Types;
-use http\Encoding\Stream\Deflate;
 use Symfony\Bridge\Doctrine\Types\UuidType;
 use Symfony\Component\Uid\Uuid;
 use Doctrine\ORM\Mapping as ORM;
@@ -22,10 +22,10 @@ class Wallet
     #[ORM\OneToOne(mappedBy: 'wallet', targetEntity: Asset::class)]
     private Asset $asset;
 
-    #[ORM\Column(type: Types::DECIMAL, length: 10, precision: 2)]
+    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
     private float  $capital;
 
-    #[ORM\Column(type: Types::DECIMAL, length: 10, precision: 2)]
+    #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 2)]
     private float $revenue;
 
 

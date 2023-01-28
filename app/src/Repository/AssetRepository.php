@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Model\Asset;
+use App\Model\ValueObject\Asset;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 

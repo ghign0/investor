@@ -1,7 +1,11 @@
 <?php
 
-namespace App\Model;
+namespace App\Model\ValueObject;
 
+use App\Model\Category;
+use App\Model\Risk;
+use App\Model\Type;
+use App\Model\Wallet;
 use App\Repository\AssetRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -44,7 +48,7 @@ class Asset
 
     #[ORM\OneToOne(mappedBy: 'asset', targetEntity: Wallet::class)]
     #[ORM\JoinColumn(name: 'wallet_id', referencedColumnName: 'id')]
-    private Wallet $wallet;
+    private ?Wallet $wallet = null;
 
 
     public function createNewAsset(string $name, string $parent, Category $category, Type $type, Risk $risk)
@@ -120,6 +124,19 @@ class Asset
     public function setWallet(Wallet $wallet): void
     {
         $this->wallet = $wallet;
+    }
+
+    public function hasWallet(): bool
+    {
+        return (bool)$this->wallet;
+    }
+
+    /**
+     * @return Wallet|null
+     */
+    public function getWallet(): ?Wallet
+    {
+        return $this->wallet;
     }
 
 }

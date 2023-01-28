@@ -16,16 +16,16 @@ class Type extends AttributeAbstract
     #[ORM\GeneratedValue(strategy: 'CUSTOM')]
     #[ORM\CustomIdGenerator(class: 'doctrine.uuid_generator' )]
     #[ORM\Column( type: UuidType::NAME, length: 255)]
-    private Uuid $id;
+    protected  Uuid $id;
 
     #[ORM\Column(type: Types::STRING ,  length: 255)]
-    private string $name;
+    protected  string $name;
 
     #[ORM\Column(type: Types::STRING ,  length: 255)]
-    private string $code;
+    protected  string $code;
 
     #[ORM\Column(type: Types::TEXT ,  length: 255, nullable: true)]
-    private string $note;
+    protected  string $note;
 
 
 }

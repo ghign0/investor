@@ -15,9 +15,9 @@ class AttributeFactory
     public function createAttribute(string $name, string $attributeEntity): AttributeInterface
     {
         $attribute =  match ($attributeEntity) {
-            'category'  =>  new Category(),
-            'type'      =>  new Type(),
-            'risk'      =>  new Risk(),
+            Attributes::CATEGORY  =>  new Category(),
+            Attributes::TYPE      =>  new Type(),
+            Attributes::RISK      =>  new Risk(),
             default => throw new \Exception('attributo non riconosciuto')
         };
 
@@ -30,9 +30,9 @@ class AttributeFactory
     public function getAttributeClass(string $name)
     {
         return match ($name) {
-            'category'  =>  Category::class,
-            'type'      =>  Type::class,
-            'risk'      =>  Risk::class,
+            Attributes::CATEGORY  =>  Category::class,
+            Attributes::TYPE      =>  Type::class,
+            Attributes::RISK      =>  Risk::class,
             default     => throw new \Exception('attributo non riconosciuto')
         };
     }
