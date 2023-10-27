@@ -2,7 +2,7 @@
 
 namespace App\Handler\Asset;
 
-use App\Model\Asset;
+use App\Model\ValueObject\Asset;
 use App\Model\Category;
 use App\Model\Risk;
 use App\Model\Type;
